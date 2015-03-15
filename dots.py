@@ -3,7 +3,6 @@
 import random
 import string
 
-import HTMLParser
 from flask import Flask
 app = Flask(__name__)
 
