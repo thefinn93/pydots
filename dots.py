@@ -10,6 +10,20 @@ app = Flask(__name__)
 LISTSIZE = 50
 DOTSLENGTH = 50
 
+html_escape_table = {
+    "&": "&amp;",
+    '"': "&quot;",
+    "'": "&apos;",
+    ">": "&gt;",
+    "<": "&lt;",
+    }
+
+
+def html_escape(text):
+    """Produce entities within text."""
+    return "".join(html_escape_table.get(c,c) for c in text)
+
+
 
 def genhtml(path=None):
     title = path
@@ -32,7 +46,7 @@ def index():
 
 @app.route("/dots/<path>")
 def dots(path):
-    return genhtml(HTMLParser.escape(path))
+    return genhtml(html_escape(path))
 
 
 if __name__ == "__main__":
