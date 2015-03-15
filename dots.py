@@ -3,6 +3,7 @@
 import random
 import string
 
+import HTMLParser
 from flask import Flask
 app = Flask(__name__)
 
@@ -31,7 +32,7 @@ def index():
 
 @app.route("/dots/<path>")
 def dots(path):
-    return genhtml(path)
+    return genhtml(HTMLParser.escape(path))
 
 
 if __name__ == "__main__":
