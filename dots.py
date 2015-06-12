@@ -33,17 +33,17 @@ def genhtml(path=None):
     for i in range(0, LISTSIZE):
         length = random.randint(PATHSIZE[0], PATHSIZE[1])
         rand = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(length))
-        html += "<li><a href=\"/dots/%s\">%s</a></li>\n" % (rand, rand)
+        html += "<li><a href=\"/%s\">%s</a></li>\n" % (rand, rand)
     html += "</ul>\n</code>\n</body>\n</head>"
     return html
 
 
-@app.route("/dots/")
+@app.route("/")
 def index():
     return genhtml()
 
 
-@app.route("/dots/<path>")
+@app.route("/<path>")
 def dots(path):
     return genhtml(html_escape(path))
 
