@@ -30,7 +30,7 @@ def html_escape(text):
 
 def genhtml(path=None):
     visitorlog.insert(dict(remote_addr=request.remote_addr,
-                           hostname=request.hostname,
+                           hostname=request.host,
                            referrer=request.referrer,
                            path=path,
                            useragent=request.headers.get('User-Agent'),
