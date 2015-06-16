@@ -19,7 +19,7 @@ html_escape_table = {
     "<": "&lt;",
     }
 
-db = dataset.connect('sqlite:///var/log/pydots/visitorlog.db')
+db = dataset.connect('sqlite:////var/log/pydots/visitorlog.db')
 visitorlog = db['hits']
 
 
