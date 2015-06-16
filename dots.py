@@ -3,7 +3,9 @@
 import random
 import string
 
-from flask import Flask
+import dataset
+
+from flask import Flask, request
 app = Flask(__name__)
 
 LISTSIZE = random.randint(25, 100)
@@ -17,6 +19,9 @@ html_escape_table = {
     "<": "&lt;",
     }
 
+db = dataset.connect('sqlite://visitorlog.db')
+visitorlog = db['hits']
+
 
 def html_escape(text):
     """Produce entities within text."""
@@ -24,6 +29,11 @@ def html_escape(text):
 
 
 def genhtml(path=None):
+    visitorlog.insert(dict(remote_addr=request.remote_addr,
+                           hostname=request.hostname,
+                           referrer=request.referrer,
+                           path=path,
+                           useragent=request.headers.get('User-Agent')))
     title = path
     if title is None:
         title = "Hello, crawlers!"
