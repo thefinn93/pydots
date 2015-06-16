@@ -33,7 +33,9 @@ def genhtml(path=None):
                            hostname=request.hostname,
                            referrer=request.referrer,
                            path=path,
-                           useragent=request.headers.get('User-Agent')))
+                           useragent=request.headers.get('User-Agent'),
+                           realip=request.headers.get('X-Real-Ip'),
+                           proto=request.headers.get('X-Forwarded-Proto')))
     title = path
     if title is None:
         title = "Hello, crawlers!"
