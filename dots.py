@@ -34,7 +34,7 @@ def genhtml(path=None):
                            referrer=request.referrer,
                            path=path,
                            useragent=request.headers.get('User-Agent'),
-                           realip=request.headers.get('X-Real-Ip'),
+                           realip=request.headers.get('X-Forwarded-For'),
                            proto=request.headers.get('X-Forwarded-Proto')))
     title = path
     if title is None:
