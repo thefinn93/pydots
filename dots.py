@@ -19,7 +19,7 @@ html_escape_table = {
     "<": "&lt;",
     }
 
-db = dataset.connect('sqlite://visitorlog.db')
+db = dataset.connect('sqlite:///tmp/visitorlog.db')
 visitorlog = db['hits']
 
 
