@@ -48,5 +48,10 @@ def dots(path):
     return genhtml(html_escape(path))
 
 
+@app.errorhandler(404)
+def notfound(e):
+    return genhtml(), 200
+
+
 if __name__ == "__main__":
     app.run(debug=True)
