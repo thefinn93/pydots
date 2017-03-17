@@ -26,9 +26,8 @@ def html_escape(text):
 def genhtml(path=None):
     title = path
     if title is None:
-        title = "Hello, crawlers!"
+        title = "..."
     html = "<html>\n<head>\n<title>%s</title>\n</head><body>" % title
-    html += "Dots, for crawlers that don't read the <a href=\"/robots.txt\">robots.txt</a>"
     html += "<br />\n<code>\n<ul>"
     for i in range(0, LISTSIZE):
         length = random.randint(PATHSIZE[0], PATHSIZE[1])
